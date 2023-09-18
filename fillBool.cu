@@ -21,7 +21,7 @@ void fillSize(int arraySize){
     int gridSize = (arraySize + blockSize - 1) / blockSize;
 
     // Launch the kernel to fill the array with true values
-    fillTrueValues<<<gridSize, blockSize>>>(d_array, arraySize);
+    fillValues<<<gridSize, blockSize>>>(d_array, arraySize);
 
     // Copy the result back to the host if needed
     bool *h_array = new bool[arraySize];
@@ -30,7 +30,7 @@ void fillSize(int arraySize){
     //calculate
     for(int i=0; i<arraySize; i++)
         std::cout<<h_array[i];
-    std::cout<<endl;
+    std::cout<<std::endl;
 
     // Clean up
     cudaFree(d_array);
