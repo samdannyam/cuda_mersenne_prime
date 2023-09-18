@@ -28,7 +28,7 @@ int main() {
     bool *h_array = new bool[arraySize];
     cudaMemcpy(h_array, d_array, arrayBytes, cudaMemcpyDeviceToHost);
 
-    print
+    //print
     for(int i=0;i<arraySize;i++)
         std::cout<<h_array[i];
 
