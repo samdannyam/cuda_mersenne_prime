@@ -30,6 +30,8 @@ int main() {
 
     // Clean up
     cudaFree(d_array);
+    for(int i=0;i<arraySize;i++)
+        std::cout<<h_array[i];
     delete[] h_array;
 
     return 0;
