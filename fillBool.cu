@@ -28,7 +28,9 @@ void fillSize(int arraySize){
     cudaMemcpy(h_array, d_array, arrayBytes, cudaMemcpyDeviceToHost);
 
     //calculate
-    
+    for(int i=0; i<arraySize; i++)
+        std::cout<<h_array[i];
+    std::cout<<endl;
 
     // Clean up
     cudaFree(d_array);
