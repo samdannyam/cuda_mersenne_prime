@@ -28,10 +28,12 @@ int main() {
     bool *h_array = new bool[arraySize];
     cudaMemcpy(h_array, d_array, arrayBytes, cudaMemcpyDeviceToHost);
 
-    // Clean up
-    cudaFree(d_array);
+    print
     for(int i=0;i<arraySize;i++)
         std::cout<<h_array[i];
+
+    // Clean up
+    cudaFree(d_array);
     delete[] h_array;
 
     return 0;
