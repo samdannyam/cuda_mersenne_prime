@@ -2,15 +2,14 @@
 #include <cuda_runtime.h>
 
 // Kernel function to fill the device array with true values (1)
-__global__ void fillTrueValues(bool *array, int size) {
+__global__ void fillValues(bool *array, int size) {
     int idx = blockIdx.x * blockDim.x + threadIdx.x;
     if (idx < size) {
         array[idx] = true;
     }
 }
 
-int main() {
-    int arraySize = 1000;
+void fillSize(int arraySize){
     size_t arrayBytes = arraySize * sizeof(bool);
 
     // Allocate device memory
@@ -28,13 +27,18 @@ int main() {
     bool *h_array = new bool[arraySize];
     cudaMemcpy(h_array, d_array, arrayBytes, cudaMemcpyDeviceToHost);
 
-    //print
-    for(int i=0;i<arraySize;i++)
-        std::cout<<h_array[i];
+    //calculate
+    
 
     // Clean up
     cudaFree(d_array);
     delete[] h_array;
+}
+int main() {
+    int max= 100000000;
+    for(int i=82589933; i<max; i+=2){
+        fillSize(i);
+    }
 
     return 0;
 }
